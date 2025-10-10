@@ -1,5 +1,5 @@
 
-# 🧙‍♂️ Quest Shop — Ava's HTML, CSS and JavaScript Project Specification
+# 🤓 QUIZ GAME!! — Ava's HTML, CSS and JavaScript Project Specification
 
 **Format:** Web-based quiz game (kinda like kahoot!)
 **Goal:** The goal is to build a quiz game, and a quiz editor, so you can share the quizes you make to other people using a JSON file. 
