@@ -25,8 +25,9 @@ By the end of the project, students will:
 ### Week 1 — GIT, Welcome & Menu
 Get your github stuff fully setup and working!!!
 Display a main menu and handle user input.  
-- Title screen and options `[1] Start  [2] Help  [3] Quit`  
+- Title screen and options `[1] Buy Items  [2] Sell to Customer  [3] End Day [Q] Quit Game`  
 - Loops until valid input is chosen  
+- Perform an appropriate action once a specific one has been chosen
 **Milestone:** Menu options behave correctly.
 
 ---
