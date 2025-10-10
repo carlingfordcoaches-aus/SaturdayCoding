@@ -1,15 +1,47 @@
-<div>Hello I'm Avaleigh</div>
-<div>I am into Coding, Crochet, Baking, Sewing, Designing and more to come</div>
-<div>I also run a business you can check out here (eventually)</div>
-<img src="Screenshot 2025-10-04 104718.png" alt="Business stuff"> 
-//varies depending on season//
-<div></div>
-<ul>We have many different items such as:</ul>
-    <li>Scarves</li>
-    <li>Beanies</li>
-    <li>Plushies</li>
-    <li>Headbands</li>
-    <li>Fingerless gloves</li>
-    <li>Coasters</li>
-    <li>Tote Bags</li>
-<ul></ul>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Web Project</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🌟 Welcome to My Website</h1>
+    </header>
+
+    <main>
+      <section id="home">
+        <h2>Home</h2>
+        <p>THIS IS STEVE'S HTML PAGE</p>
+        <button id="clickButton">Click Me</button>
+        <p id="message"></p>
+      </section>
+
+      <section id="about">
+        <h2>About</h2>
+        <p>yabadabado</p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <form id="contactForm">
+          <label>
+            Your Name:
+            <input type="text" id="nameInput" required />
+          </label>
+          <label>
+            Message:
+            <textarea id="messageInput" rows="3" required></textarea>
+          </label>
+          <button type="submit">Send</button>
+        </form>
+        <p id="formFeedback"></p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
