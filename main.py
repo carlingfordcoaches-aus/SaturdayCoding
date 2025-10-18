@@ -117,6 +117,19 @@ def day_menu(state):
     while True:
         show_status(state)
         """Write your week 1 code in here!!!"""
+        print('[1] Buy Items  [2] Sell to Customer  [3] End Day [Q] Quit Game')
+        option = input('')
+        if option == '1':
+            print('buy')
+        elif option == '2':
+            print('sell')
+        elif option == '3':
+            print('end')
+        elif option == 'Q':
+            print('quit')
+        else:
+            print('...')
+
 
 
 def main():
