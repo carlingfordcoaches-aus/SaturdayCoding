@@ -1,9 +1,14 @@
 // Show a message when the button is clicked
 const clickButton = document.getElementById("clickButton");
 const message = document.getElementById("message");
+const click = document.getElementById("takeToPage");
 
 clickButton.addEventListener("click", () => {
   message.textContent = "🎉 You clicked the button! Great job!";
+});
+
+click.addEventListener("click", () => {
+  message.textContent = ""
 });
 
 // === Contact Form Logic ===
