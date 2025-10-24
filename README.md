@@ -30,6 +30,14 @@ Display a home page using HTML and CSS
     - You can do this using a "hide" class if you want, or by creating another file and rerouting the user to the contents of that file
 **Milestone:** Home page displays correctly and has the right functionality
 
+### Week 2 — Input Gathering and creating the "Create Page"
+This week, our goal is to make the input page for our create game page!
+Display a create game page using HTML and CSS 
+- Display a create game page that has the buttons "Create" and "Add question"
+- Add input fields for elements you think should be in a quiz, e.g. "What is the name of this quiz?"
+- Add a button that allows the user to add another question
+- Find a way to signal what option in the question is correct
+**Milestone:** Create game page displays and takes in inputs correctly. The "add question" button logic works such that once clicked, more input options should appear allowing the user to add extra questions to their quiz.
 ---
 
 ### Weekly Check (2–3 min)
