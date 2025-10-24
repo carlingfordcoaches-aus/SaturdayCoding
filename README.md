@@ -37,7 +37,6 @@ Display a create game page using HTML and CSS
 - Add input fields for elements you think should be in a quiz, e.g. "What is the name of this quiz?"
 - Add a button that allows the user to add another question
 - Find a way to signal what option in the question is correct
-
 **Milestone:** Create game page displays and takes in inputs correctly. The "add question" button logic works such that once clicked, more input options should appear allowing the user to add extra questions to their quiz.
 ---
 
