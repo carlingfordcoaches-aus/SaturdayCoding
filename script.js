@@ -8,7 +8,7 @@ clickButton.addEventListener("click", () => {
 });
 
 click.addEventListener("click", () => {
-  message.textContent = ""
+  message.textContent = " Go to Start page"
 });
 
 // === Contact Form Logic ===

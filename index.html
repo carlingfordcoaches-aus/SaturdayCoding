@@ -17,11 +17,23 @@
         <h2>Home</h2>
         <p>THIS IS STEVIE'S HTML PAGE</p>
         <button id="clickButton">Click Me</button>
-        <button id="Click">Start</button>
-        <button id="Click">Create</button>
-        <button id="Click">Play</button>
+        <button onclick="myFunction()">Replace document</button>
+        <button onclick="myOtherFunction()">Create document</button>
+        <button id="Click">Go to playPage</button>
         <p id="message"></p>
       </section>
+
+      <script>
+        function myFunction() {
+          window.location.href = "/StartPage.html";
+        }
+      </script>
+
+      <script>
+        function myOtherFunction() {
+          window.location.href = "/createPage.html";
+        }
+      </script>
 
       <section id="about">
         <h2>About</h2>
