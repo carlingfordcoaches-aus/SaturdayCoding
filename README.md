@@ -38,6 +38,63 @@ Display a create game page using HTML and CSS
 - Add a button that allows the user to add another question
 - Find a way to signal what option in the question is correct
 **Milestone:** Create game page displays and takes in inputs correctly. The "add question" button logic works such that once clicked, more input options should appear allowing the user to add extra questions to their quiz.
+
+### Week 3-4 — Parsing our input variables into JSON
+Over the next two weeks, our goal is to learn what JSON is, and apply it into the project!
+Parse the input into a JSON file, that can be downloaded!
+- Take the input from the "create game page" from last week and output the variables into a JSON file format!
+Here is an example of a JSON schema!
+```JSON
+{
+  "quizTitle": "General Knowledge Quiz",
+  "description": "A short quiz to test your general knowledge.",
+  "questions": [
+    {
+      "id": 1,
+      "questionText": "What is the capital of France?",
+      "options": [
+        "Berlin",
+        "Madrid",
+        "Paris",
+        "Rome"
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "Paris is the capital and most populous city of France."
+    },
+    {
+      "id": 2,
+      "questionText": "Which planet is known as the Red Planet?",
+      "options": [
+        "Venus",
+        "Mars",
+        "Jupiter",
+        "Saturn"
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "Mars appears red due to iron oxide on its surface."
+    },
+    {
+      "id": 3,
+      "questionText": "Who wrote 'To Kill a Mockingbird'?",
+      "options": [
+        "Harper Lee",
+        "Mark Twain",
+        "Jane Austen",
+        "J.K. Rowling"
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Harper Lee published the novel in 1960."
+    }
+  ],
+  "settings": {
+    "shuffleQuestions": true,
+    "shuffleOptions": true,
+    "timeLimitSeconds": 120,
+    "passingScore": 70
+  }
+}
+```
+**Milestone:** Learn how JSON works, and understand how to create files in JavaScript
 ---
 
 ### Weekly Check (2–3 min)
