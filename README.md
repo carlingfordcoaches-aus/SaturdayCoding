@@ -43,6 +43,7 @@ Display a create game page using HTML and CSS
 Over the next two weeks, our goal is to learn what JSON is, and apply it into the project!
 Parse the input into a JSON file, that can be downloaded!
 - Take the input from the "create game page" from last week and output the variables into a JSON file format!
+Here is a [video to help explain JSON](https://www.youtube.com/watch?v=iiADhChRriM)
 Here is an example of a JSON schema!
 ```JSON
 {
