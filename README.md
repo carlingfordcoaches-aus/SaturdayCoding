@@ -94,12 +94,11 @@ Here is an example of a JSON schema!
     "passingScore": 70
   }
 }
-
+```
 #### Week 4
 - Create a button, and pass in the given helper function to create a downloadable file.
     - This file should allow the user to download the quiz data, which will help us share the quiz later on in this project!
 - Create this button in the createPage.html file
-```
 **Milestone:** Learn how JSON works, and understand how to create files in JavaScript
 ---
 
