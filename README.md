@@ -96,6 +96,10 @@ Here is an example of a JSON schema!
 }
 ```
 **Milestone:** Learn how JSON works, and understand how to create files in JavaScript
+
+### Week 5 — Creating the template for the play page!
+The goal of this week is to create a basic style and layout for the playPage. This is the page where users will get the question and have the ability to answer!
+
 ---
 
 ### Weekly Check (2–3 min)
