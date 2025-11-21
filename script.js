@@ -1,3 +1,7 @@
+document.getElementById("AddJSONFileInput"); addEventListener(click, function) () {}
+
+const newFileInputWrapper = document.createElement('div')
+
 // Show a message when the button is clicked
 const clickButton = document.getElementById("clickButton");
 const message = document.getElementById("message");
@@ -8,7 +12,7 @@ clickButton.addEventListener("click", () => {
 });
 
 click.addEventListener("click", () => {
-  message.textContent = " Go to Start page"
+  message.textContent = "Start page";
 });
 
 // === Contact Form Logic ===
