@@ -104,6 +104,16 @@ Here is an example of a JSON schema!
 ### Week 5 — Creating the template for the play page!
 The goal of this week is to create a basic style and layout for the playPage. This is the page where users will get the question and have the ability to answer!
 
+### Week 6 — Create an input for the JSON file!
+This week, we will create an input button on the playPage for the JSON file that we have constructed a few weeks ago. 
+This JSON file can then have its data extracted and used to fill out our questions using JavaScript!
+- The first step is to create an input that takes in a file.
+- The next step is to "open" that file using JavaScript and extract the data
+- Print out the data in the console using:
+```JavaScript
+console.log(data)
+```
+
 ---
 
 ### Weekly Check (2–3 min)
