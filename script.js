@@ -1,10 +1,11 @@
-document.getElementById("AddJSONFileInput"); addEventListener(click, function) () {}
+const jsonFIle = document.getElementById("AddJSONFileInput");
+
 
 const newFileInputWrapper = document.createElement('div');
 
 const label = document.createElement('label');
 const uniqueId = 'fileInput_' + date.Now();
-label.setAttribute(for, uniqueId);
+label.setAttribute ('for', uniqueId);
 label.textContext = 'Choose File: ';
 
 const FileInput  = document.createElement('input');
