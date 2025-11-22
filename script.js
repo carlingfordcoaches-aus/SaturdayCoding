@@ -16,7 +16,6 @@ const FileInput  = document.createElement('input');
   newFileInputWrapper.appendChild(fileInput);
 
   document.getElementById('fileInputsContainer').appendChild(newFileInputWrapper);
-});
 
 // Show a message when the button is clicked
 const clickButton = document.getElementById("clickButton");
