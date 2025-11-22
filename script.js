@@ -19,9 +19,14 @@ const FileInput  = document.createElement('input');
   document.getElementById('fileInputsContainer').appendChild(newFileInputWrapper);
 
 // Show a message when the button is clicked
+const clickTheButton = document.getElementById("upload JSON file")
 const clickButton = document.getElementById("clickButton");
 const message = document.getElementById("message");
 const click = document.getElementById("takeToPage");
+
+click.addEventListener("click", () => {
+  message.textContent = "playPage"
+  });
 
 clickButton.addEventListener("click", () => {
   message.textContent = "🎉 You clicked the button! Great job!";
