@@ -1,6 +1,22 @@
 document.getElementById("AddJSONFileInput"); addEventListener(click, function) () {}
 
-const newFileInputWrapper = document.createElement('div')
+const newFileInputWrapper = document.createElement('div');
+
+const label = document.createElement('label');
+const uniqueId = 'fileInput_' + date.Now();
+label.setAttribute(for, uniqueId);
+label.textContext = 'Choose File: ';
+
+const FileInput  = document.createElement('input');
+  fileInput.setAttribute('type', 'file');
+  fileInput.setAttribute('id', uniqueId);
+  fileInput.setAttribute('name', 'uploadedFile[]');
+
+  newFileInputWrapper.appendChild(label);
+  newFileInputWrapper.appendChild(fileInput);
+
+  document.getElementById('fileInputsContainer').appendChild(newFileInputWrapper);
+});
 
 // Show a message when the button is clicked
 const clickButton = document.getElementById("clickButton");
