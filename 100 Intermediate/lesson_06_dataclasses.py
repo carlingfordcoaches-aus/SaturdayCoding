@@ -4,13 +4,13 @@ Focus: Leverage dataclasses for simple models."""
 
 
 def exercise_1():
-    """Add a computed property that returns a slugified version of the assignment title."""
+    """**Computed Property**: Add a computed property to the `Assignment` dataclass that returns a "slugified" version of the title (e.g., `"Loops Drill"` becomes `"loops-drill"`)."""
     # TODO: Add a computed property that returns a slugified version of the assignment title.
     pass
 
 
 def exercise_2():
-    """Instantiate several Assignment objects and sort them by max_score using sorted and attrgetter."""
+    """**Sorting Dataclasses**: Instantiate several `Assignment` objects and sort them by `max_score` in ascending order using the `sorted()` function and `operator.attrgetter`."""
     # TODO: Instantiate several Assignment objects and sort them by max_score using sorted and attrgetter.
     pass
 

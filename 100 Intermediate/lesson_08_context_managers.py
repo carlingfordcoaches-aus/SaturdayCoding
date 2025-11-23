@@ -4,13 +4,13 @@ Focus: Create custom context managers."""
 
 
 def exercise_1():
-    """Write a context manager class (not decorator) that times how long a block takes to run."""
+    """**Timer Context Manager**: Write a context manager class (not a decorator) that times how long a block of code takes to run."""
     # TODO: Write a context manager class (not decorator) that times how long a block takes to run.
     pass
 
 
 def exercise_2():
-    """Refactor open_lesson to accept a mode parameter and test both write and read flows."""
+    """**File Mode Parameter**: Refactor the `open_lesson` context manager to accept a `mode` parameter (`"w"` for write, `"r"` for read) and test both flows."""
     # TODO: Refactor open_lesson to accept a mode parameter and test both write and read flows.
     pass
 

@@ -3,13 +3,13 @@
 Focus: Recognize Python data types and convert between them."""
 
 def exercise_1():
-    """Build a list containing an int, float, string, and bool, then print each value with its type."""
+    """**Build a Mixed-Type List**: Create a list containing the following items: `42` (int), `"projects"` (str), `3.14` (float), and `True` (bool). Iterate through the list and print each value along with its data type."""
     # TODO: Build a list containing an int, float, string, and bool, then print each value with its type.
     pass
 
 
 def exercise_2():
-    """Turn a numeric string into an int and add it to a float to show the total."""
+    """**Combine Different Types**: Create a numeric string `"10"` and a float `45.5`. Convert the string to an integer and add it to the float. Print the total."""
     # TODO: Turn a numeric string into an int and add it to a float to show the total.
     pass
 

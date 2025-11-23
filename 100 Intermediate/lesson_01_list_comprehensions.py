@@ -4,13 +4,13 @@ Focus: Transform sequences with list comprehensions."""
 
 
 def exercise_1():
-    """Replace the list comprehension with an equivalent for-loop and compare readability."""
+    """**Loop vs. Comprehension**: Create a list of squares for numbers 1-5 using a list comprehension. Then, create an equivalent list using a for-loop and compare the readability."""
     # TODO: Replace the list comprehension with an equivalent for-loop and compare readability.
     pass
 
 
 def exercise_2():
-    """Build a dictionary comprehension that maps numbers 1-5 to their cubes."""
+    """**Dictionary Comprehension**: Build a dictionary comprehension that maps numbers 1-5 to their cubes."""
     # TODO: Build a dictionary comprehension that maps numbers 1-5 to their cubes.
     pass
 

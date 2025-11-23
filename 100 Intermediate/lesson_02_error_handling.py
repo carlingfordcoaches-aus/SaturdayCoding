@@ -4,13 +4,13 @@ Focus: Use try/except/else/finally blocks."""
 
 
 def exercise_1():
-    """Raise a ValueError inside safe_divide when non-numeric arguments are provided."""
+    """**Raise ValueError**: In the `safe_divide` function, raise a `ValueError` if non-numeric arguments are provided."""
     # TODO: Raise a ValueError inside safe_divide when non-numeric arguments are provided.
     pass
 
 
 def exercise_2():
-    """Write a context manager that logs when division starts/ends and pair it with try/except."""
+    """**Logging Context Manager**: Write a context manager that logs "Division starting" before the division and "Division finished" after. Use it with a try/except block to handle potential errors."""
     # TODO: Write a context manager that logs when division starts/ends and pair it with try/except.
     pass
 

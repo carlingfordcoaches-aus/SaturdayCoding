@@ -4,13 +4,13 @@ Focus: Track weekly allowance spending with lists and simple calculations."""
 
 
 def exercise_1():
-    """Ask the user for their allowance and warn them when only $5 remains."""
+    """**Allowance Warning**: Ask the user for their weekly allowance. As they add expenses, warn them when they have only $5 remaining."""
     # TODO: Ask the user for their allowance and warn them when only $5 remains.
     pass
 
 
 def exercise_2():
-    """Sort purchases from most to least expensive before printing the summary."""
+    """**Sort Purchases**: Sort the purchases from most to least expensive before printing the summary."""
     # TODO: Sort purchases from most to least expensive before printing the summary.
     pass
 

@@ -3,13 +3,13 @@
 Focus: Use sets for uniqueness and tuples for ordered pairs."""
 
 def exercise_1():
-    """Collect club names in a set to remove duplicates."""
+    """**Unique Clubs**: Create a list of club names with duplicates (e.g., `["Robotics", "Chess", "Robotics"]`). Use a set to find and print the unique club names."""
     # TODO: Collect club names in a set to remove duplicates.
     pass
 
 
 def exercise_2():
-    """Store classroom seat coordinates as tuples and iterate over them."""
+    """**Seat Coordinates**: Store classroom seat coordinates as a list of tuples, where each tuple represents a `(row, seat)` pair (e.g., `(1, "A")`, `(1, "B")`). Iterate over the list and print each coordinate."""
     # TODO: Store classroom seat coordinates as tuples and iterate over them.
     pass
 
