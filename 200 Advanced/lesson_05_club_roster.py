@@ -4,13 +4,13 @@ Focus: Use classes to organize a school club roster."""
 
 
 def exercise_1():
-    """Add a method that searches for members by role and prints their names."""
+    """**Search by Role**: Add a method to the `Club` class that searches for members by their role (e.g., `"Captain"`) and prints their names."""
     # TODO: Add a method that searches for members by role and prints their names.
     pass
 
 
 def exercise_2():
-    """Create a `SportsClub` subclass that tracks the sport name and overrides `badge_text`."""
+    """**SportsClub Subclass**: Create a `SportsClub` subclass that inherits from `Club`, tracks the name of the sport, and overrides the `badge_text` method."""
     # TODO: Create a `SportsClub` subclass that tracks the sport name and overrides `badge_text`.
     pass
 

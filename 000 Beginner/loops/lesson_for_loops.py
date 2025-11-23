@@ -3,13 +3,13 @@
 Focus: Use for-loops with ranges and lists to repeat work."""
 
 def exercise_1():
-    """Print a multiplication table for numbers 1 through 5."""
+    """**Multiplication Table**: Use a for-loop with `range()` to print a multiplication table for the number `5`, from 1 to 10."""
     # TODO: Print a multiplication table for numbers 1 through 5.
     pass
 
 
 def exercise_2():
-    """Iterate over a chores list and number each task using enumerate."""
+    """**Numbered Chores**: Create a list of chores (e.g., `["Feed the fish", "Clean room", "Take out trash"]`). Use a for-loop with `enumerate()` to print each task with its corresponding number."""
     # TODO: Iterate over a chores list and number each task using enumerate.
     pass
 

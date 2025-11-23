@@ -4,13 +4,13 @@ Focus: Configure logging for reusable modules."""
 
 
 def exercise_1():
-    """Configure a file handler that writes logs to logs/intermediate.log."""
+    """**File Handler**: Configure a file handler to write logs to a file named `logs/intermediate.log`."""
     # TODO: Configure a file handler that writes logs to logs/intermediate.log.
     pass
 
 
 def exercise_2():
-    """Add structured data (e.g., lesson name, user) to the log message using keyword arguments."""
+    """**Structured Logging**: Add structured data (e.g., `lesson_name`, `user`) to the log messages using keyword arguments."""
     # TODO: Add structured data (e.g., lesson name, user) to the log message using keyword arguments.
     pass
 

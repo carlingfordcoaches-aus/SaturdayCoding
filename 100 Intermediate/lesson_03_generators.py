@@ -4,13 +4,13 @@ Focus: Build a generator for incremental IDs."""
 
 
 def exercise_1():
-    """Add a limit parameter to id_sequence that stops iteration and raises StopIteration with a message."""
+    """**Generator with Limit**: Add a `limit` parameter to the `id_sequence` generator. When the limit is reached, the generator should raise `StopIteration` with a message."""
     # TODO: Add a limit parameter to id_sequence that stops iteration and raises StopIteration with a message.
     pass
 
 
 def exercise_2():
-    """Create a generator expression that yields only even IDs from the main generator."""
+    """**Even ID Generator**: Create a generator expression that yields only the even IDs from the `id_sequence` generator."""
     # TODO: Create a generator expression that yields only even IDs from the main generator.
     pass
 
