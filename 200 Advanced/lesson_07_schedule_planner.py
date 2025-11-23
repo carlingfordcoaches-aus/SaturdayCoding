@@ -4,13 +4,13 @@ Focus: Build a day planner that keeps tasks in order."""
 
 
 def exercise_1():
-    """Let the user remove a task by typing its time."""
+    """**Remove Task**: Allow the user to remove a task by typing its time (e.g., `"09:00"`)."""
     # TODO: Let the user remove a task by typing its time.
     pass
 
 
 def exercise_2():
-    """Export the ordered plan to a file called `my_schedule.txt`."""
+    """**Export to File**: Export the ordered schedule to a file named `my_schedule.txt`."""
     # TODO: Export the ordered plan to a file called `my_schedule.txt`.
     pass
 

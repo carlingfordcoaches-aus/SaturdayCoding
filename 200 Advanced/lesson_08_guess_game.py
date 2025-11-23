@@ -4,13 +4,13 @@ Focus: Code a number guessing game with friendly hints."""
 
 
 def exercise_1():
-    """Replace the pretend guesses with input() and keep looping until the player wins."""
+    """**User Input**: Replace the hardcoded guesses with `input()` and keep looping until the player guesses the correct number."""
     # TODO: Replace the pretend guesses with input() and keep looping until the player wins.
     pass
 
 
 def exercise_2():
-    """Track how many guesses were used and celebrate if they solved it in three tries or less."""
+    """**Guess Counter**: Track how many guesses the player uses. If they solve it in three tries or less, celebrate their win."""
     # TODO: Track how many guesses were used and celebrate if they solved it in three tries or less.
     pass
 

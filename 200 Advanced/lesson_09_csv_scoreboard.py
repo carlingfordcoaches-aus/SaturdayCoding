@@ -4,13 +4,13 @@ Focus: Store and load game scores from a CSV file."""
 
 
 def exercise_1():
-    """Sort the loaded rows by `points` and print a podium for the top three students."""
+    """**Top Three Podium**: Sort the loaded scores by `points` and print a podium for the top three students."""
     # TODO: Sort the loaded rows by `points` and print a podium for the top three students.
     pass
 
 
 def exercise_2():
-    """Allow new scores to be appended instead of overwriting the whole file each time."""
+    """**Append Scores**: Allow new scores to be appended to the CSV file instead of overwriting it each time."""
     # TODO: Allow new scores to be appended instead of overwriting the whole file each time.
     pass
 
