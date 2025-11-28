@@ -114,6 +114,12 @@ This JSON file can then have its data extracted and used to fill out our questio
 console.log(data)
 ```
 
+### Week 7 - 9 — Write the output of the JSON file to the play page, and also add some styling!
+Over the next few weeks we will take the data from the json file and populate our webpage!
+- This means taking the "questions" field and allowing the user to input an answer
+    - If the answer is correct, you should indicate that (maybe by displaying a tick or any other method)
+- Make sure to add some styling across your webpage so it looks aesthetically pleasing!
+
 ---
 
 ### Weekly Check (2–3 min)
