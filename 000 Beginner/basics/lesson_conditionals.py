@@ -3,7 +3,10 @@
 Focus: Write if/elif/else chains for guidance and validation."""
 
 def exercise_1():
-    """**Weather Helper**: Write a function `weather_helper(temp_c)` that takes a temperature in Celsius (e.g., `15`) and returns a string suggesting what to wear. Use an if/elif/else chain to handle different temperature ranges."""
+    """**Weather Helper**: Write a function `weather_helper(temp_c)` that takes a temperature in Celsius (e.g., `15`) and returns a string suggesting what to wear. Use an if/elif/else chain to handle different temperature ranges."""\
+    usertemp=int(input("what's the temperature rn?"))
+    if(usertemp)
+
     # TODO: Create a weather_helper(temp_c) that returns what to wear.
     pass
 
