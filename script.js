@@ -25,7 +25,7 @@ const message = document.getElementById("message");
 const click = document.getElementById("takeToPage");
 
 click.addEventListener("click", () => {
-  message.textContent = "playPage"
+  message.textContent = "play Page"
   });
 
 clickButton.addEventListener("click", () => {
