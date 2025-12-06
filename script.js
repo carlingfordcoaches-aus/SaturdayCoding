@@ -20,12 +20,17 @@ const FileInput  = document.createElement('input');
 
 // Show a message when the button is clicked
 const clickTheButton = document.getElementById("upload JSON file")
+const clickAnotherButton = document.getElementById("open and print JSON file")
 const clickButton = document.getElementById("clickButton");
 const message = document.getElementById("message");
 const click = document.getElementById("takeToPage");
 
+clickAnotherButton.addEventListener("click", () => {
+  message.textContent = "console.log(data)";
+  });
+
 click.addEventListener("click", () => {
-  message.textContent = "play Page"
+  message.textContent = "play Page";
   });
 
 clickButton.addEventListener("click", () => {
