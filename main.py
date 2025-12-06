@@ -118,17 +118,20 @@ def day_menu(state):
         show_status(state)
         """Write your week 1 code in here!!!"""
         print('[1] Buy Items  [2] Sell to Customer  [3] End Day [Q] Quit Game')
-        option = input('')
+        option = input('> ')
         if option == '1':
-            print('buy')
+            buy_flow(state)
         elif option == '2':
-            print('sell')
+            sell_to_customer(state)
         elif option == '3':
-            print('end')
+            end_day(state)
+            # Return to the main loop so the next day begins
+            return
         elif option == 'Q':
-            print('quit')
+            print('Goodbye!')
+            raise SystemExit(0)
         else:
-            print('...')
+            print('⚠️ Invalid option.')
 
 
 
@@ -144,3 +147,4 @@ def main():
 # === Program Start ===
 if __name__ == "__main__":
     main()
+
