@@ -43,6 +43,13 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
+.Open JSON file {
+  display: block; 
+  margin: 0 auto; 
+  width: fit-content; 
+}
+
+
 button {
   background-color: #0077b6;
   color: white;
