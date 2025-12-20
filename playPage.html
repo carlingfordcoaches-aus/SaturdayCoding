@@ -5,18 +5,26 @@
 
 <body>
 
-<div class="flex-container">
-  <img src="https://i.pinimg.com/736x/d6/a3/ab/d6a3aba78f75afb8203c19c67e4aca7c.jpg" alt="Old computer screen">
-</div>
-
 <input type="file" placeholder="File name">
-
-<script>
-  
-
-</script>
 
 <div id="fileInputContainer"></div>
 <button id="open and print JSON file">Open JSON file</button>
+<p id="para"></p>
 <div id="console.log(data)"></div>
+
+<script>
+  myJSON = '{"name":"John", "age":30, "car":null}';
+  myObj = JSON.parse(myJSON);
+  console.log(myObj.name);
+  paragraph = document.getElementById("para")
+  console.log(myObj);
+  paragraph.innerText = myObj.questions
+  
+  //  = myObj.name
+
+  
+
+</script>
 </body>
+
+</html>

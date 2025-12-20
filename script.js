@@ -27,6 +27,30 @@ const click = document.getElementById("takeToPage");
 
 clickAnotherButton.addEventListener("click", () => {
   message.textContent = "console.log(data)";
+const fs = require('fs');
+const path = require('path');
+
+// Define the path to your JSON file
+const jsonFilePath = path.join(__dirname, 'yourfile.json');
+
+// Read the file content synchronously
+// In a real application, you might use asynchronous methods for better performance
+try {
+    const dataString = fs.readFileSync(jsonFilePath, 'utf-8');
+    
+    // Parse the JSON string into a JavaScript object
+    const dataObject = JSON.parse(dataString);
+    
+} catch (error) {
+    console.error("Error reading or parsing JSON file:", error);
+}
+
+console.log("--- JSON Content (Pretty Printed) ---");
+console.log(JSON.stringify(dataObject, null, 2));
+
+console.log("--- JSON Content (Collapsible Object View) ---");
+
+console.dir(dataObject); 
   });
 
 click.addEventListener("click", () => {
