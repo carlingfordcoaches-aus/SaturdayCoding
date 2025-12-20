@@ -6,10 +6,13 @@ def exercise_1():
     """**Weather Helper**: Write a function `weather_helper(temp_c)` that takes a temperature in Celsius (e.g., `15`) and returns a string suggesting what to wear. Use an if/elif/else chain to handle different temperature ranges."""\
     
     usertemp = int(input("what's the tempature rn? "))
-    if(usertemp<15):
+    if(usertemp<18):
         print("it's best to were your winter clothes: a thick jumper and hoddie or sweater and some long pants or somthing along those lines")
-    elif(usertemp>15>25):
-        
+    elif(usertemp>18<25):
+        print("were a shirt and long pants")
+    else:
+        print("were a T shirt and shorts")
+
 
 
     # TODO: Create a weather_helper(temp_c) that returns what to wear.
