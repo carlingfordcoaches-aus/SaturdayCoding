@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<title>Dare to play?</title>
+
+<body>
+
+<input type="file" placeholder="File name">
+
+<div id="fileInputContainer"></div>
+<button id="open and print JSON file">Open JSON file</button>
+<p id="para"></p>
+<div id="console.log(data)"></div>
+
+<script>
+  myJSON = '{"name":"John", "age":30, "car":null}';
+  myObj = JSON.parse(myJSON);
+  console.log(myObj.name);
+  paragraph = document.getElementById("para")
+  console.log(myObj);
+  paragraph.innerText = myObj.questions
+  
+  //  = myObj.name
+
+  
+
+</script>
+</body>
+
+</html>
