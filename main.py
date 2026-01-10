@@ -9,23 +9,7 @@ You’ll expand this each week by adding new features.
 
 # === Imports ===
 import random
-
-# === Game Setup ===
-CATALOG = {
-    "Herb": {"buy": 3, "sell": 4},
-    "Potion": {"buy": 5, "sell": 7},
-    "Sword": {"buy": 20, "sell": 28},
-}
-
-
-def new_game():
-    """Create a new game state with starting values."""
-    return {
-        "day": 1,
-        "gold": 50,
-        "inventory": {},
-    }
-
+import json
 
 # === Helper Functions ===
 def show_status(state):
@@ -48,6 +32,20 @@ def can_afford(state, cost):
     """Check if player can afford an item."""
     return state["gold"] >= cost
 
+def randomEvent(state):
+    randomevents = random.randint(1, 4)
+
+    if randomevents == 1:
+        print("A merchant arrives and gives you 15 herbs!")
+        add_item(state["inventory"], "Herb", 15)
+    elif randomevents == 2:
+        print("A bandit steals 15 gold from you!")
+        state["gold"] -= 15
+    elif randomevents == 3:
+        print("You found a hidden stash of 50 gold!")
+        state["gold"] += 50
+    else:
+        print("Nothing happened today")
 
 # === Game Actions ===
 def buy_flow(state):
@@ -111,40 +109,86 @@ def end_day(state):
     print(f"🌞 It is now Day {state['day']}.")
 
 
+def save_game(state):
+    try:
+        with open('main_save.json', 'w') as f:
+            json.dump(state, f, indent=2)
+        print("✅ Game saved successfully.")
+    except Exception as e:
+        print(f"❌ Error saving game: {e}")
+
+
+def load_game():
+    try:
+        with open('main_save.json', 'r') as f:
+            data = json.load(f)
+        print("✅ Game loaded successfully.")
+        return data
+    except FileNotFoundError:
+        print("❌ No save file found.")
+        return None
+    except Exception as e:
+        print(f"❌ Error loading game: {e}")
+        return None
+
+
+# === Game Setup ===
+CATALOG = {
+    "Herb": {"buy": 3, "sell": 4},
+    "Potion": {"buy": 5, "sell": 7},
+    "Sword": {"buy": 20, "sell": 28},
+}
+
+
+def new_game():
+    # Create a new game state with starting values
+    return {
+        "day": 1,
+        "gold": 50,
+        "inventory": {},
+    }
+
+
+
+
 # === Main Loop ===
 def day_menu(state):
-    """Main daily menu for the player."""
+    # Main daily menu for the player
     while True:
         show_status(state)
-        """Write your week 1 code in here!!!"""
-        print('[1] Buy Items  [2] Sell to Customer  [3] End Day [Q] Quit Game')
+        print('[1] Buy Items  [2] Sell to Customer  [3] End Day [L] Load Game [S] Save Game [Q] Quit Game')
         option = input('> ')
         if option == '1':
             buy_flow(state)
         elif option == '2':
             sell_to_customer(state)
         elif option == '3':
+            randomEvent(state)
             end_day(state)
-            # Return to the main loop so the next day begins
             return
         elif option == 'Q':
             print('Goodbye!')
             raise SystemExit(0)
+        elif option == 'S':
+            save_game(state)
+        elif option == 'L':
+            loaded = load_game()
+            if loaded:
+                state.clear()
+                state.update(loaded)
+                print("✅ Game state updated from save file.")
         else:
             print('⚠️ Invalid option.')
 
 
-
 def main():
     """Run the Quest Shop game."""
-    print("🏰 Welcome to QUEST SHOP!")
-    state = new_game()
-
     while True:
         day_menu(state)
 
 
 # === Program Start ===
 if __name__ == "__main__":
+    print("🏰 Welcome to QUEST SHOP")
+    state = new_game()
     main()
-
