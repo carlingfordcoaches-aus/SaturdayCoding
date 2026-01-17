@@ -137,6 +137,17 @@ CATALOG = {
     "Herb": {"buy": 3, "sell": 4},
     "Potion": {"buy": 5, "sell": 7},
     "Sword": {"buy": 20, "sell": 28},
+    "Axe": {"buy": 50, "sell": 75},
+    "Helmet": {"buy": 200, "sell": 300},
+    "Bow": {"buy": 1000, "sell": 1500},
+    "Shield": {"buy": 5000, "sell": 7500},
+    "Amour": {"buy": 20000, "sell": 30000},
+    "Horse": {"buy": 100000, "sell": 150000},
+    "Carriage": {"buy": 5000000, "sell": 7500000},
+    "Castle": {"buy": 150000000, "sell": 210000000},
+    "Magic Scroll": {"buy": 5000000000, "sell": 7000000000},
+    "Diamond": {"buy": 1000000000000, "sell": 3000000000000},
+    "Legendary Sword": {"buy": 50000000000000, "sell": 75000000000000},
 }
 
 
@@ -156,7 +167,7 @@ def day_menu(state):
     # Main daily menu for the player
     while True:
         show_status(state)
-        print('[1] Buy Items  [2] Sell to Customer  [3] End Day [L] Load Game [S] Save Game [Q] Quit Game')
+        print('[1] Buy Items  [2] Sell to Customer  [3] End Day [4] Craft Items [L] Load Game [S] Save Game [Q] Quit Game')
         option = input('> ')
         if option == '1':
             buy_flow(state)
@@ -166,6 +177,8 @@ def day_menu(state):
             randomEvent(state)
             end_day(state)
             return
+        elif option == '4':
+            craft_items()
         elif option == 'Q':
             print('Goodbye!')
             raise SystemExit(0)
@@ -192,3 +205,25 @@ if __name__ == "__main__":
     print("🏰 Welcome to QUEST SHOP")
     state = new_game()
     main()
+
+def craft_items():
+    """Allow the player to craft items."""
+    print("\n=== 🛠️ CRAFT ITEMS ===")
+    print("Available recipes:")
+    print("[1] Potion (requires 5 Herbs) - sells for 7g")
+    print("[0] Back")
+
+    choice = input("> ")
+    if choice == "0":
+        return
+
+    if choice == "1":
+        have_herbs = state["inventory"].get("Herb", 0)
+        if have_herbs >= 5:
+            state["inventory"]["Herb"] -= 5
+            add_item(state["inventory"], "Potion", 1)
+            print("✅ Crafted 1 Potion.")
+        else:
+            print("❌ Not enough Herbs to craft a Potion.")
+    else:
+        print("⚠️ Invalid choice.")
