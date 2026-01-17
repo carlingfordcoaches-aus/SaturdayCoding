@@ -33,17 +33,23 @@ def can_afford(state, cost):
     return state["gold"] >= cost
 
 def randomEvent(state):
-    randomevents = random.randint(1, 4)
+    randomevents = random.randint(1, 100)
 
-    if randomevents == 1:
+    if randomevents == 1 or 2 or 3 or 4 or 5 or 6 or 7 or 8 or 9 or 10 or 11 or 12 or 13 or 14 or 15 or 16 or 17 or 18 or 19 or 20 or 21 or 22 or 23 or 24:
         print("A merchant arrives and gives you 15 herbs!")
         add_item(state["inventory"], "Herb", 15)
-    elif randomevents == 2:
+    elif randomevents == 25 or 26 or 27 or 28 or 29 or 30 or 31 or 32 or 33 or 34 or 35 or 36 or 37 or 38 or 39 or 40 or 41 or 42 or 43 or 44 or 45 or 46 or 47 or 48:
         print("A bandit steals 15 gold from you!")
         state["gold"] -= 15
-    elif randomevents == 3:
+    elif randomevents == 49 or 50 or 51 or 52 or 53 or 54 or 55 or 56 or 57 or 58 or 59 or 60 or 61 or 62 or 63 or 64 or 65 or 66 or 67 or 68 or 69 or 70 or 71 or 72:
         print("You found a hidden stash of 50 gold!")
         state["gold"] += 50
+    elif randomevents == 73 or 74 or 75 or 76 or 77 or 78 or 79 or 80 or 81 or 82:
+        print("You found a treasure chest with 2 helmets.")
+        add_item(state["inventory"], "Helmet", 2)
+    elif randomevents == 97 or 98 or 99 or 100:
+        print("A traveling blacksmith gives you a legendary sword!")
+        add_item(state["inventory"], "Legendary Sword", 1)
     else:
         print("Nothing happened today")
 
@@ -139,14 +145,7 @@ CATALOG = {
     "Sword": {"buy": 20, "sell": 28},
     "Axe": {"buy": 50, "sell": 75},
     "Helmet": {"buy": 200, "sell": 300},
-    "Bow": {"buy": 1000, "sell": 1500},
-    "Shield": {"buy": 5000, "sell": 7500},
-    "Amour": {"buy": 20000, "sell": 30000},
-    "Horse": {"buy": 100000, "sell": 150000},
-    "Carriage": {"buy": 5000000, "sell": 7500000},
-    "Castle": {"buy": 150000000, "sell": 210000000},
     "Magic Scroll": {"buy": 5000000000, "sell": 7000000000},
-    "Diamond": {"buy": 1000000000000, "sell": 3000000000000},
     "Legendary Sword": {"buy": 50000000000000, "sell": 75000000000000},
 }
 
