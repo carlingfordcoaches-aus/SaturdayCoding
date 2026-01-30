@@ -1,6 +1,6 @@
 """
 Quest Shop — Starter Code
-Author: <Student Name>
+Author: <student name>
 Week: 1–2
 
 This is the starter code for your Quest Shop game.
@@ -10,6 +10,33 @@ You’ll expand this each week by adding new features.
 # === Imports ===
 import random
 import json
+
+
+def main():
+    """Run the Quest Shop game."""
+    while True:
+        day_menu(state)
+
+# === Game Setup ===
+CATALOG = {
+    "Herb": {"buy": 3, "sell": 4},
+    "Potion": {"buy": 5, "sell": 7},
+    "Sword": {"buy": 20, "sell": 28},
+    "Axe": {"buy": 50, "sell": 75},
+    "Helmet": {"buy": 200, "sell": 300},
+    "Magic Scroll": {"buy": 5000000000, "sell": 7000000000},
+    "Legendary Sword": {"buy": 50000000000000, "sell": 75000000000000},
+    "Legendary Scroll": {"buy": "n/a ", "sell": 5000000000000}
+}
+
+
+def new_game():
+    # Create a new game state with starting values
+    return {
+        "day": 1,
+        "gold": 50,
+        "inventory": {},
+    }
 
 # === Helper Functions ===
 def show_status(state):
@@ -22,7 +49,7 @@ def show_status(state):
         for item, qty in state["inventory"].items():
             print(f"   {item} x{qty}")
 
-
+# === inventory management ===
 def add_item(inv, name, qty):
     """Add items to the player’s inventory."""
     inv[name] = inv.get(name, 0) + qty
@@ -32,8 +59,9 @@ def can_afford(state, cost):
     """Check if player can afford an item."""
     return state["gold"] >= cost
 
+# === event function ===
 def randomEvent():
-    randomevents = random.randint(1, 64)
+    randomevents = random.randint(1, 70)
     luckyevent = random.randint(1, 36)
     if randomevents == 1 or randomevents == 2 or randomevents == 3 or randomevents == 4 or randomevents == 5 or randomevents == 6 or randomevents == 7 or randomevents == 8 or randomevents == 9 or randomevents == 10:
         print("A merchant arrives and gives you 15 herbs!")
@@ -47,17 +75,58 @@ def randomEvent():
     elif randomevents == 31 or randomevents == 32 or randomevents == 33 or randomevents == 34 or randomevents == 35:
         print("You found a treasure chest with 2 helmets.")
         add_item(state["inventory"], "Helmet", 2)
-    elif randomevents == 36:
-        print("A traveling blacksmith gives you a legendary sword!")
-        add_item(state["inventory"], "Legendary Sword", 1)
+    elif randomevents == 36 or randomevents == 39 or randomevents == 40 or randomevents == 41 or randomevents == 42 or randomevents == 43 or randomevents == 44 or randomevents == 45 or randomevents == 46:
+        wonderingBlacksmith()
     elif randomevents == 37 or randomevents == 38:
         print("A sudden storm damages your shop, you lose 20 gold in repairs.")
-        if luckyevent == 38:
+        if luckyevent == 36:
             print('However, you found a magic scroll in the debris!')
             add_item(state["inventory"], "Magic Scroll", 1)
         state["gold"] -= 20
     else:
         print("Nothing happened today")
+
+def wonderingBlacksmith():
+    legendary = random.randint(1, 64)    
+    print("A traveling blacksmith passes your shop")
+    if legendary == 32 or legendary == 31:
+        print("He gave you a Legendary Sword")
+        add_item(state["inventory"], "Legendary Sword", 1)
+    else:
+        print("He gave you a helmet")
+        add_item(state["inventory"], "Helmet", 1)
+
+# === Main Loop ===
+def day_menu(state):
+    # Main daily menu for the player
+    while True:
+        show_status(state)
+        print('[1] Buy Items  [2] Sell to Customer  [3] End Day [4] Craft Items [L] Load Game [S] Save Game [Q] Quit Game')
+        option = input('> ')
+        if option == '1':
+            buy_flow(state)
+        elif option == '2':
+            sell_to_customer(state)
+        elif option == '3':
+            randomEvent()
+            end_day(state)
+            return
+        elif option == '4':
+            craft_items()
+        elif option == 'Q' or option == 'q':
+            print('Goodbye!')
+            raise SystemExit(0)
+        elif option == 'S' or option == 's':
+            save_game(state)
+        elif option == 'L' or option == 'l':
+            loaded = load_game()
+            if loaded:
+                state.clear()
+                state.update(loaded)
+                print("✅ Game state updated from save file.")
+        else:
+            print('⚠️ Invalid option.')
+
 
 # === Game Actions ===
 def buy_flow(state):
@@ -97,6 +166,84 @@ def buy_flow(state):
     state["gold"] -= cost
     add_item(state["inventory"], item_name, qty)
     print(f"✅ Bought {qty} {item_name}(s) for {cost} gold.")
+
+def craft_items():
+    """Allow the player to craft items."""
+    print("\n=== 🛠️ CRAFT ITEMS ===")
+    print("Available recipes:")
+    print("[1] Potion (requires 5 Herbs) - sells for 7g")
+    print("[2] Helmet (requires 10 Herbs, 1 sword and 100 gold ) - sells for 300g")
+    print("[3] Sword (requires 5 Herbs and 10 gold) - sells for 28g")
+    print("[4] Magic Scroll (requires 5 Herbs and 5000000 gold) - sells for 7000000g")
+    print("[5] Legendary Scroll (requires 4 Magic Scroll, 100 herbs and 3000000000000 gold) - sells for 50000000000000g")
+    print("[6] Legendary Sword (requires 1 Legendary Scroll, 1 Sword, and 1000000000 gold) - sells for 7500000000000g")
+    print("[0] Back")
+
+    choice = input("> ")
+    if choice == "0":
+        return
+
+    if choice == "1":
+        have_herbs = state["inventory"].get("Herb", 0)
+        if have_herbs >= 5:
+            state["inventory"]["Herb"] -= 5
+            add_item(state["inventory"], "Potion", 1)
+            print("✅ Crafted 1 Potion.")
+        else:
+            print("❌ Not enough Herbs to craft a Potion.")
+    elif choice == "2":
+        have_herbs = state["inventory"].get("Herb", 0)
+        have_swords = state["inventory"].get("Sword", 0)
+        if have_herbs >= 10 and have_swords >= 1 and state["gold"] >= 100:
+            state["inventory"]["Herb"] -= 10
+            state["inventory"]["Sword"] -= 1
+            state["gold"] -= 100
+            add_item(state["inventory"], "Helmet", 1)
+            print("✅ Crafted 1 Helmet.")
+        else:
+            print("❌ Not enough resources to craft a Helmet.")
+    elif choice == "3":
+        have_herbs = state["inventory"].get("Herb", 0)
+        if have_herbs >= 5 and state["gold"] >= 10:
+            state["inventory"]["Herb"] -= 5
+            state["gold"] -= 10
+            add_item(state["inventory"], "Sword", 1)
+            print("✅ Crafted 1 Sword.")
+        else:
+            print("❌ Not enough resources to craft a Sword.")
+    elif choice == "4":
+        have_herbs = state["inventory"].get("Herb", 0)
+        if have_herbs >= 5 and state["gold"] >= 5000000:
+            state["inventory"]["Herb"] -= 5
+            state["gold"] -= 5000000
+            add_item(state["inventory"], "Magic Scroll", 1)
+            print("✅ Crafted 1 Magic Scroll.")
+        else:
+            print("❌ Not enough resources to craft a Magic Scroll.")
+    elif choice == "5":
+        have_magic_scroll = state["inventory"].get("Magic Scroll", 0)
+        have_herbs = state["inventory"].get("Herb", 0)
+        if have_magic_scroll >= 4 and state["gold"] >= 3000000000000 and have_herbs >= 100:
+            state["inventory"]["Magic Scroll"] -= 4
+            state["inventory"]["Herb"] -= 100
+            state["gold"] -= 3000000000000
+            add_item(state["inventory"], "Legendary Scroll", 1)
+            print("✅ Crafted 1 Legendary Scroll.")
+        else:
+            print("❌ Not enough resources to craft a Legendary Scroll.")
+    elif choice == "6":
+        have_magic_scroll = state["inventory"].get("Legendary Scroll", 0)
+        have_sword = state["inventory"].get("Sword", 0)
+        if have_magic_scroll >= 1 and have_sword >= 1 and state["gold"] >= 1000000000:
+            state["inventory"]["Legendary Scroll"] -= 1
+            state["inventory"]["Sword"] -= 1
+            state["gold"] -= 1000000000
+            add_item(state["inventory"], "Legendary Sword", 1)
+            print("✅ Crafted 1 Legendary Sword.")
+        else:
+            print("❌ Not enough resources to craft a Legendary Sword.")
+    else:
+        print("⚠️ Invalid choice.")
 
 
 def sell_to_customer(state):
@@ -144,144 +291,6 @@ def load_game():
     except Exception as e:
         print(f"❌ Error loading game: {e}")
         return None
-
-
-# === Game Setup ===
-CATALOG = {
-    "Herb": {"buy": 3, "sell": 4},
-    "Potion": {"buy": 5, "sell": 7},
-    "Sword": {"buy": 20, "sell": 28},
-    "Axe": {"buy": 50, "sell": 75},
-    "Helmet": {"buy": 200, "sell": 300},
-    "Magic Scroll": {"buy": 5000000000, "sell": 7000000000},
-    "Legendary Sword": {"buy": 50000000000000, "sell": 75000000000000},
-    "Legendary Scroll": {"buy": "n/a ", "sell": 5000000000000}
-}
-
-
-def new_game():
-    # Create a new game state with starting values
-    return {
-        "day": 1,
-        "gold": 50,
-        "inventory": {},
-    }
-
-
-
-
-# === Main Loop ===
-def day_menu(state):
-    # Main daily menu for the player
-    while True:
-        show_status(state)
-        print('[1] Buy Items  [2] Sell to Customer  [3] End Day [4] Craft Items [L] Load Game [S] Save Game [Q] Quit Game')
-        option = input('> ')
-        if option == '1':
-            buy_flow(state)
-        elif option == '2':
-            sell_to_customer(state)
-        elif option == '3':
-            randomEvent()
-            end_day(state)
-            return
-        elif option == '4':
-            craft_items()
-        elif option == 'Q' or option == 'q':
-            print('Goodbye!')
-            raise SystemExit(0)
-        elif option == 'S' or option == 's':
-            save_game(state)
-        elif option == 'L' or option == 'l':
-            loaded = load_game()
-            if loaded:
-                state.clear()
-                state.update(loaded)
-                print("✅ Game state updated from save file.")
-        else:
-            print('⚠️ Invalid option.')
-
-
-def main():
-    """Run the Quest Shop game."""
-    while True:
-        day_menu(state)
-
-def craft_items():
-    """Allow the player to craft items."""
-    print("\n=== 🛠️ CRAFT ITEMS ===")
-    print("Available recipes:")
-    print("[1] Potion (requires 5 Herbs) - sells for 7g")
-    print("[2] Helmet (requires 10 Herbs, 1 sword and 100 gold ) - sells for 300g")
-    print("[3] Sword (requires 5 Herbs and 10 gold) - sells for 28g")
-    print("[4] Magic Scroll (requires 5 Herbs and 5000000 gold) - sells for 7000000g")
-    print("[5] Legendary Scroll (requires 1 Magic Scroll and 3000000000000 gold) - sells for 50000000000000g")
-    print("[6] Legendary Sword (requires 1 Legendary Scroll, 1 Sword, and 1000000000 gold) - sells for 7500000000000g")
-    print("[0] Back")
-
-    choice = input("> ")
-    if choice == "0":
-        return
-
-    if choice == "1":
-        have_herbs = state["inventory"].get("Herb", 0)
-        if have_herbs >= 5:
-            state["inventory"]["Herb"] -= 5
-            add_item(state["inventory"], "Potion", 1)
-            print("✅ Crafted 1 Potion.")
-        else:
-            print("❌ Not enough Herbs to craft a Potion.")
-    elif choice == "2":
-        have_herbs = state["inventory"].get("Herb", 0)
-        have_swords = state["inventory"].get("Sword", 0)
-        if have_herbs >= 10 and have_swords >= 1 and state["gold"] >= 100:
-            state["inventory"]["Herb"] -= 10
-            state["inventory"]["Sword"] -= 1
-            state["gold"] -= 100
-            add_item(state["inventory"], "Helmet", 1)
-            print("✅ Crafted 1 Helmet.")
-        else:
-            print("❌ Not enough resources to craft a Helmet.")
-    elif choice == "3":
-        have_herbs = state["inventory"].get("Herb", 0)
-        if have_herbs >= 5 and state["gold"] >= 10:
-            state["inventory"]["Herb"] -= 5
-            state["gold"] -= 10
-            add_item(state["inventory"], "Sword", 1)
-            print("✅ Crafted 1 Sword.")
-        else:
-            print("❌ Not enough resources to craft a Sword.")
-    elif choice == "4":
-        have_herbs = state["inventory"].get("Herb", 0)
-        if have_herbs >= 5 and state["gold"] >= 5000000:
-            state["inventory"]["Herb"] -= 5
-            state["gold"] -= 5000000
-            add_item(state["inventory"], "Magic Scroll", 1)
-            print("✅ Crafted 1 Magic Scroll.")
-        else:
-            print("❌ Not enough resources to craft a Magic Scroll.")
-    elif choice == "5":
-        have_magic_scroll = state["inventory"].get("Magic Scroll", 0)
-        if have_magic_scroll >= 1 and state["gold"] >= 3000000000000:
-            state["inventory"]["Magic Scroll"] -= 1
-            state["gold"] -= 3000000000000
-            add_item(state["inventory"], "Legendary Scroll", 1)
-            print("✅ Crafted 1 Legendary Scroll.")
-        else:
-            print("❌ Not enough resources to craft a Legendary Scroll.")
-    elif choice == "6":
-        have_magic_scroll = state["inventory"].get("Magic Scroll", 0)
-        have_sword = state["inventory"].get("Sword", 0)
-        if have_magic_scroll >= 1 and have_sword >= 1 and state["gold"] >= 1000:
-            state["inventory"]["Legendary Scroll"] -= 1
-            state["inventory"]["Sword"] -= 1
-            state["gold"] -= 1000000000
-            add_item(state["inventory"], "Legendary Sword", 1)
-            print("✅ Crafted 1 Legendary Sword.")
-        else:
-            print("❌ Not enough resources to craft a Legendary Sword.")
-    else:
-        print("⚠️ Invalid choice.")
 
 # === Program Start ===
 if __name__ == "__main__":

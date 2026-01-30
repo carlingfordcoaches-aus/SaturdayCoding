@@ -1,11 +1,11 @@
 {
-  "day": 100,
-  "gold": 74985000002762,
-  "inventory": {
-    "Herb": 167,
-    "Helmet": 0,
-    "Legendary Sword": 1,
-    "Magic Scroll": 0,
-    "Sword": 0
+  "day": 23848562093485,
+  "gold": 3035000001230012417273418134665, 
+"inventory": {
+    "Helmet": 62,
+    "Herb": 595,
+    "Magic Scroll": 12,
+    "Legendary Scroll": 7,
+    "Legendary Sword": 1
   }
 }
