@@ -1,10 +1,19 @@
 """Helpful Conditionals
 
 Focus: Write if/elif/else chains for guidance and validation."""
+def weather_helper(temp_c)
+    if temp_c > 30 degrees:
+        return("Wear a T-shirt!")
+    elif temp_c < 20:
+        return("Wear a jacket!")
+    else: 
+        return("Wear a jumper bro.")
 
 def exercise_1():
     """**Weather Helper**: Write a function `weather_helper(temp_c)` that takes a temperature in Celsius (e.g., `15`) and returns a string suggesting what to wear. Use an if/elif/else chain to handle different temperature ranges."""
     # TODO: Create a weather_helper(temp_c) that returns what to wear.
+    temp = 34
+    print(f"temp {temp}C -> {weather_helper(temp)}")
     pass
 
 
@@ -16,7 +25,7 @@ def exercise_2():
 
 def main():
     """Uncomment the exercises you want to run."""
-    # exercise_1()
+    exercise_1()
     # exercise_2()
     pass
 
