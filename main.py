@@ -15,33 +15,77 @@ import json
 def main():
     """Run the Quest Shop game."""
     while True:
-        day_menu(state)
+        print("[1] New Game  [2] Load Game  [Q] Quit")
+        choice = input("> ").strip().lower()
+        if choice == "1":
+            state = new_game()
+            day_menu(state)
+        elif choice == "2":
+            loaded = load_game()
+            if loaded:
+                state = loaded
+                day_menu(state)
+        elif choice == "q" or choice == "Q":
+            print("Thanks for playing!")
+            break
+        else:
+            print("⚠️ Invalid choice. Please try again.")
+            main()
 
 # === Game Setup ===
-CATALOG = {
-    "Herb": {"buy": 3, "sell": 4},
-    "Potion": {"buy": 5, "sell": 7},
-    "Sword": {"buy": 20, "sell": 28},
-    "Axe": {"buy": 50, "sell": 75},
-    "Helmet": {"buy": 200, "sell": 300},
-    "Magic Scroll": {"buy": 5000000000, "sell": 7000000000},
-    "Legendary Sword": {"buy": 50000000000000, "sell": 75000000000000},
-    "Legendary Scroll": {"buy": "n/a ", "sell": 5000000000000}
-}
 
 
 def new_game():
     # Create a new game state with starting values
-    return {
-        "day": 1,
-        "gold": 50,
-        "inventory": {},
-    }
+    difficulty = input("[1] Easy  [2] Normal  [3] Hard\n> ")
+    if difficulty == "1":
+        return {
+            "difficulty": "1",
+            "day": 1,
+            "gold": 50,
+            "inventory": {},
+            difficulty: "1"
+        }
+    elif difficulty == "2":
+        return {
+            "difficulty": "2",
+            "day": 1,
+            "gold": 25,
+            "inventory": {},
+            difficulty: "2"
+            
+        }
+    elif difficulty == "3":
+        return {
+            "difficulty": "3",
+            "day": 1,
+            "gold": 10,
+            "inventory": {},
+            difficulty: "3"
+        }
+    else:
+        print("⚠️ Invalid choice. Please try again.")
+        new_game()
+    return difficulty
+
+
+CATALOG = {
+    "Herb": {"buy": 5, "sell": 7},
+    "Potion": {"buy": 10, "sell": 15},
+    "Helmet": {"buy": 100, "sell": 300},
+    "Sword": {"buy": 28, "sell": 50},
+    "Magic Scroll": {"buy": 7000000, "sell": 10000000},
+    "Legendary Scroll": {"buy": 50000000000000, "sell": 75000000000000},
+    "Legendary Sword": {"buy": 7500000000000, "sell": 10000000000000}
+}
+
+        
+
 
 # === Helper Functions ===
 def show_status(state):
     """Display the current day, gold, and inventory."""
-    print(f"\n📅 Day {state['day']} | 💰 Gold: {state['gold']}")
+    print(f"\n📅 Day {state['day']}  💰 Gold: {state['gold']} | 💀 Difficulty: {state['difficulty']}")
     if not state["inventory"]:
         print("🧺 Inventory: (empty)")
     else:
@@ -61,30 +105,82 @@ def can_afford(state, cost):
 
 # === event function ===
 def randomEvent():
-    randomevents = random.randint(1, 70)
-    luckyevent = random.randint(1, 36)
-    if randomevents == 1 or randomevents == 2 or randomevents == 3 or randomevents == 4 or randomevents == 5 or randomevents == 6 or randomevents == 7 or randomevents == 8 or randomevents == 9 or randomevents == 10:
-        print("A merchant arrives and gives you 15 herbs!")
-        add_item(state["inventory"], "Herb", 15)
-    elif randomevents == 11 or randomevents == 12 or randomevents == 13 or randomevents == 14 or randomevents == 15 or randomevents == 16 or randomevents == 17 or randomevents == 18 or randomevents == 19 or randomevents == 20:
-        print("A bandit steals 15 gold from you!")
-        state["gold"] -= 15
-    elif randomevents == 21 or randomevents == 22 or randomevents == 23 or randomevents == 24 or randomevents == 25 or randomevents == 26 or randomevents == 27 or randomevents == 28 or randomevents == 29 or randomevents == 30:
-        print("You found a hidden stash of 50 gold!")
-        state["gold"] += 50
-    elif randomevents == 31 or randomevents == 32 or randomevents == 33 or randomevents == 34 or randomevents == 35:
-        print("You found a treasure chest with 2 helmets.")
-        add_item(state["inventory"], "Helmet", 2)
-    elif randomevents == 36 or randomevents == 39 or randomevents == 40 or randomevents == 41 or randomevents == 42 or randomevents == 43 or randomevents == 44 or randomevents == 45 or randomevents == 46:
-        wonderingBlacksmith()
-    elif randomevents == 37 or randomevents == 38:
-        print("A sudden storm damages your shop, you lose 20 gold in repairs.")
-        if luckyevent == 36:
-            print('However, you found a magic scroll in the debris!')
-            add_item(state["inventory"], "Magic Scroll", 1)
-        state["gold"] -= 20
-    else:
-        print("Nothing happened today")
+    
+    if state["difficulty"] == "1":
+        randomevents = random.randint(1, 80)
+        luckyevent = random.randint(1, 10)
+        if randomevents == 1 or randomevents == 2 or randomevents == 3 or randomevents == 4 or randomevents == 5 or randomevents == 6 or randomevents == 7 or randomevents == 8 or randomevents == 9 or randomevents == 10:
+            print("A merchant arrives and gives you 15 herbs!")
+            add_item(state["inventory"], "Herb", 15)
+        elif randomevents == 11 or randomevents == 12 or randomevents == 13 or randomevents == 14 or randomevents == 15 or randomevents == 16 or randomevents == 17 or randomevents == 18 or randomevents == 19 or randomevents == 20:
+            print("A bandit steals 15 gold from you!")
+            state["gold"] -= 15
+        elif randomevents == 21 or randomevents == 22 or randomevents == 23 or randomevents == 24 or randomevents == 25 or randomevents == 26 or randomevents == 27 or randomevents == 28 or randomevents == 29 or randomevents == 30:
+            print("You found a hidden stash of 50 gold!")
+            state["gold"] += 50
+        elif randomevents == 31 or randomevents == 32 or randomevents == 33 or randomevents == 34 or randomevents == 35 or randomevents == 47 or randomevents == 48 or randomevents == 49:
+            print("You found a treasure chest with 2 helmets.")
+            add_item(state["inventory"], "Helmet", 2)
+        elif randomevents == 36 or randomevents == 39 or randomevents == 40 or randomevents == 41 or randomevents == 42 or randomevents == 43 or randomevents == 44 or randomevents == 45 or randomevents == 46:
+            wonderingBlacksmith()
+        elif randomevents == 37 or randomevents == 38:
+            print("A sudden storm damages your shop, you lose 20 gold in repairs.")
+            if luckyevent == 10:
+                print('However, you found a magic scroll in the debris!')
+                add_item(state["inventory"], "Magic Scroll", 1)
+            state["gold"] -= 20
+        else:
+            print("Nothing happened today")
+    if state["difficulty"] == "2":
+        randomevents = random.randint(1, 70)
+        luckyevent = random.randint(1, 36)
+        if randomevents == 1 or randomevents == 2 or randomevents == 3 or randomevents == 4 or randomevents == 5 or randomevents == 6 or randomevents == 7 or randomevents == 8 or randomevents == 9 or randomevents == 10:
+            print("A merchant arrives and gives you 15 herbs!")
+            add_item(state["inventory"], "Herb", 15)
+        elif randomevents == 11 or randomevents == 12 or randomevents == 13 or randomevents == 14 or randomevents == 15 or randomevents == 16 or randomevents == 17 or randomevents == 18 or randomevents == 19 or randomevents == 20:
+            print("A bandit steals 15 gold from you!")
+            state["gold"] -= 15
+        elif randomevents == 21 or randomevents == 22 or randomevents == 23 or randomevents == 24 or randomevents == 25 or randomevents == 26 or randomevents == 27 or randomevents == 28 or randomevents == 29 or randomevents == 30:
+            print("You found a hidden stash of 50 gold!")
+            state["gold"] += 50
+        elif randomevents == 31 or randomevents == 32 or randomevents == 33 or randomevents == 34 or randomevents == 35 or randomevents:
+            print("You found a treasure chest with 2 helmets.")
+            add_item(state["inventory"], "Helmet", 2)
+        elif randomevents == 36 or randomevents == 39 or randomevents == 40 or randomevents == 41 or randomevents == 42 or randomevents == 43 or randomevents == 44 or randomevents == 45 or randomevents == 46:
+            wonderingBlacksmith()
+        elif randomevents == 37 or randomevents == 38:
+            print("A sudden storm damages your shop, you lose 20 gold in repairs.")
+            if luckyevent == 36:
+                print('However, you found a magic scroll in the debris!')
+                add_item(state["inventory"], "Magic Scroll", 1)
+            state["gold"] -= 20
+        else:
+            print("Nothing happened today")
+    if state["difficulty"] == "3":
+        randomevents = random.randint(1, 70)
+        luckyevent = random.randint(1, 72)
+        if randomevents == 1 or randomevents == 2 or randomevents == 3 or randomevents == 4 or randomevents == 5 or randomevents == 6 or randomevents == 7 or randomevents == 8 or randomevents == 9 or randomevents == 10:
+            print("A merchant arrives and gives you 15 herbs!")
+            add_item(state["inventory"], "Herb", 15)
+        elif randomevents == 11 or randomevents == 12 or randomevents == 13 or randomevents == 14 or randomevents == 15 or randomevents == 16 or randomevents == 17 or randomevents == 18 or randomevents == 19 or randomevents == 20:
+            print("A bandit steals 15 gold from you!")
+            state["gold"] -= 15
+        elif randomevents == 21 or randomevents == 22 or randomevents == 23 or randomevents == 24 or randomevents == 25 or randomevents == 26 or randomevents == 27 or randomevents == 28 or randomevents == 29 or randomevents == 30:
+            print("You found a hidden stash of 50 gold!")
+            state["gold"] += 50
+        elif randomevents == 31 or randomevents == 32 or randomevents == 33 or randomevents == 34 or randomevents == 35 or randomevents:
+            print("You found a treasure chest with 2 helmets.")
+            add_item(state["inventory"], "Helmet", 2)
+        elif randomevents == 36 or randomevents == 39 or randomevents == 40 or randomevents == 41 or randomevents == 42 or randomevents == 43 or randomevents == 44 or randomevents == 45 or randomevents == 46:
+            wonderingBlacksmith()
+        elif randomevents == 37 or randomevents == 38:
+            print("A sudden storm damages your shop, you lose 20 gold in repairs.")
+            if luckyevent == 36:
+                print('However, you found a magic scroll in the debris!')
+                add_item(state["inventory"], "Magic Scroll", 1)
+            state["gold"] -= 20
+        else:
+            print("Nothing happened today")
 
 def wonderingBlacksmith():
     legendary = random.randint(1, 64)    
@@ -101,7 +197,7 @@ def day_menu(state):
     # Main daily menu for the player
     while True:
         show_status(state)
-        print('[1] Buy Items  [2] Sell to Customer  [3] End Day [4] Craft Items [L] Load Game [S] Save Game [Q] Quit Game')
+        print('[1] Buy Items  [2] Sell to Customer  [3] End Day [4] Craft Items [S] Save Game [Q] Quit Game')
         option = input('> ')
         if option == '1':
             buy_flow(state)
@@ -118,12 +214,6 @@ def day_menu(state):
             raise SystemExit(0)
         elif option == 'S' or option == 's':
             save_game(state)
-        elif option == 'L' or option == 'l':
-            loaded = load_game()
-            if loaded:
-                state.clear()
-                state.update(loaded)
-                print("✅ Game state updated from save file.")
         else:
             print('⚠️ Invalid option.')
 
