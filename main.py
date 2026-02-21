@@ -8,6 +8,7 @@ You’ll expand this each week by adding new features.
 """
 
 # === Imports ===
+from os import system
 import random
 import json
 
@@ -197,6 +198,12 @@ def day_menu(state):
     # Main daily menu for the player
     while True:
         show_status(state)
+        if state["difficulty"] == "1":
+            print("You need 1 billion (1000000000) gold by day 300 to win.")
+        elif state["difficulty"] == "2":
+            print("You need 1 trillion (1000000000000) gold by day 300 to win.")
+        elif state["difficulty"] == "3":
+            print("You need 1 quadrillion (1000000000000000) gold by day 300 to win.")
         print('[1] Buy Items  [2] Sell to Customer  [3] End Day [4] Craft Items [S] Save Game [Q] Quit Game')
         option = input('> ')
         if option == '1':
@@ -358,6 +365,40 @@ def end_day(state):
     print("\n🌙 The day ends...")
     state["day"] += 1
     print(f"🌞 It is now Day {state['day']}.")
+    if state["day"] == 300:
+        if state["difficulty"] == "1":
+            if state["gold"] >= 1000000000:
+                print("🎉 Congratulations! You completed the game on Easy difficulty!")
+                print("Would you wish to continue playing? [Y/N]")
+                choice = input("> ").strip().lower()
+                if choice == "n" or choice == "N":
+                    raise SystemExit(0)
+                if choice == "y" or choice == "Y":
+                    print("Great! Keep playing and see how much more you can achieve!")
+            else:
+                print("😞 You did not meet the requirements to complete the game on Easy difficulty.")
+                raise SystemExit(0)
+        if state["difficulty"] == "2":
+            if state["gold"] >= 1000000000000:
+                print("🎉 Congratulations! You completed the game on Medium difficulty!")
+                print("Would you wish to continue playing? [Y/N]")
+                choice = input("> ").strip().lower()
+                if choice == "n" or choice == "N":
+                    raise SystemExit(0)
+                if choice == "y" or choice == "Y":
+                    print("Great! Keep playing and see how much more you can achieve!")
+            else:
+                print("😞 You did not meet the requirements to complete the game on Medium difficulty.")
+                raise SystemExit(0)
+        if state["difficulty"] == "3":
+            if state["gold"] >= 1000000000000000:
+                print("🎉 Congratulations! You completed the game on Hard difficulty!")
+                print("Would you wish to continue playing? [Y/N]")
+                choice = input("> ").strip().lower()
+                if choice == "n" or choice == "N":
+                    raise SystemExit(0)
+                if choice == "y" or choice == "Y":
+                    print("Great! Keep playing and see how much more you can achieve!")
 
 
 def save_game(state):
@@ -371,7 +412,7 @@ def save_game(state):
 
 def load_game():
     try:
-        with open('main_save.json', 'r') as f:
+        with open('SaturdayCoding/main_save.json', 'r') as f:
             data = json.load(f)
         print("✅ Game loaded successfully.")
         return data
