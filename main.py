@@ -367,39 +367,47 @@ def end_day(state):
     print(f"🌞 It is now Day {state['day']}.")
     if state["day"] == 300:
         if state["difficulty"] == "1":
-            if state["gold"] >= 1000000000:
-                print("🎉 Congratulations! You completed the game on Easy difficulty!")
-                print("Would you wish to continue playing? [Y/N]")
-                choice = input("> ").strip().lower()
-                if choice == "n" or choice == "N":
-                    raise SystemExit(0)
-                if choice == "y" or choice == "Y":
-                    print("Great! Keep playing and see how much more you can achieve!")
-            else:
-                print("😞 You did not meet the requirements to complete the game on Easy difficulty.")
-                raise SystemExit(0)
+            dif1(state)
         if state["difficulty"] == "2":
-            if state["gold"] >= 1000000000000:
-                print("🎉 Congratulations! You completed the game on Medium difficulty!")
-                print("Would you wish to continue playing? [Y/N]")
-                choice = input("> ").strip().lower()
-                if choice == "n" or choice == "N":
-                    raise SystemExit(0)
-                if choice == "y" or choice == "Y":
-                    print("Great! Keep playing and see how much more you can achieve!")
-            else:
-                print("😞 You did not meet the requirements to complete the game on Medium difficulty.")
-                raise SystemExit(0)
+            dif2(state)
         if state["difficulty"] == "3":
-            if state["gold"] >= 1000000000000000:
-                print("🎉 Congratulations! You completed the game on Hard difficulty!")
-                print("Would you wish to continue playing? [Y/N]")
-                choice = input("> ").strip().lower()
-                if choice == "n" or choice == "N":
-                    raise SystemExit(0)
-                if choice == "y" or choice == "Y":
-                    print("Great! Keep playing and see how much more you can achieve!")
+            dif3(state)
 
+def dif1(state):
+    if state["gold"] >= 1000000000:
+        print("🎉 Congratulations! You completed the game on Easy difficulty!")
+        print("Would you wish to continue playing? [Y/N]")
+        choice = input("> ").strip().lower()
+        if choice == "n" or choice == "N":
+                raise SystemExit(0)
+        if choice == "y" or choice == "Y":
+                print("Great! Keep playing and see how much more you can achieve!")
+        else:
+            print("😞 You did not meet the requirements to complete the game on Easy difficulty.")
+            raise SystemExit(0)
+
+def dif2(state):
+    if state["gold"] >= 1000000000000:
+        print("🎉 Congratulations! You completed the game on Medium difficulty!")
+        print("Would you wish to continue playing? [Y/N]")
+        choice = input("> ").strip().lower()
+        if choice == "n" or choice == "N":
+            raise SystemExit(0)
+        if choice == "y" or choice == "Y":
+            print("Great! Keep playing and see how much more you can achieve!")
+    else:
+        print("😞 You did not meet the requirements to complete the game on Medium difficulty.")
+        raise SystemExit(0)
+
+def dif3(state):
+    if state["gold"] >= 1000000000000000:
+        print("🎉 Congratulations! You completed the game on Hard difficulty!")
+        print("Would you wish to continue playing? [Y/N]")
+        choice = input("> ").strip().lower()
+        if choice == "n" or choice == "N":
+            raise SystemExit(0)
+        if choice == "y" or choice == "Y":
+            print("Great! Keep playing and see how much more you can achieve!")
 
 def save_game(state):
     try:
@@ -412,7 +420,7 @@ def save_game(state):
 
 def load_game():
     try:
-        with open('SaturdayCoding/main_save.json', 'r') as f:
+        with open('main_save.json', 'r') as f:
             data = json.load(f)
         print("✅ Game loaded successfully.")
         return data
