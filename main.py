@@ -16,7 +16,7 @@ import json
 def main():
     """Run the Quest Shop game."""
     while True:
-        print("[1] New Game  [2] Load Game  [Q] Quit")
+        print("[1] New Game  [2] Load Game [H] Help [Q] Quit")
         choice = input("> ").strip().lower()
         if choice == "1":
             state = new_game()
@@ -26,6 +26,8 @@ def main():
             if loaded:
                 state = loaded
                 day_menu(state)
+        elif choice == "h" or choice == "H":
+            show_help()
         elif choice == "q" or choice == "Q":
             print("Thanks for playing!")
             break
@@ -204,7 +206,7 @@ def day_menu(state):
             print("You need 1 trillion (1000000000000) gold by day 300 to win.")
         elif state["difficulty"] == "3":
             print("You need 1 quadrillion (1000000000000000) gold by day 300 to win.")
-        print('[1] Buy Items  [2] Sell to Customer  [3] End Day [4] Craft Items [S] Save Game [Q] Quit Game')
+        print('[1] Buy Items  [2] Sell to Customer  [3] End Day [4] Craft Items [H] Help [S] Save Game [Q] Quit Game')
         option = input('> ')
         if option == '1':
             buy_flow(state)
@@ -216,6 +218,8 @@ def day_menu(state):
             return
         elif option == '4':
             craft_items()
+        elif option == 'H' or option == 'h':
+            show_help()
         elif option == 'Q' or option == 'q':
             print('Goodbye!')
             raise SystemExit(0)
@@ -224,7 +228,15 @@ def day_menu(state):
         else:
             print('⚠️ Invalid option.')
 
-
+def show_help():
+    print("\n=== HELP MENU ===")
+    print("Welcome to Quest Shop! Here’s how to play:")
+    print("- Each day, you can buy items, sell to customers, craft new items, or end the day.")
+    print("- Your goal is to reach a certain amount of gold by Day 300 based on your difficulty level.")
+    print("- Buying items costs gold, but you can sell them for a profit or use them in crafting.")
+    print("- Crafting allows you to combine items into more valuable ones.")
+    print("- Random events can help or hinder your progress each day.")
+    print("Good luck, and have fun playing Quest Shop!")
 # === Game Actions ===
 def buy_flow(state):
     """Allow the player to buy items."""
