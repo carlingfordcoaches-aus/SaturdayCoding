@@ -1,10 +1,7 @@
 """
-Quest Shop — Starter Code
-Author: <student name>
-Week: 1–2
-
-This is the starter code for your Quest Shop game.
-You’ll expand this each week by adding new features.
+Quest Shop
+Author: Branson
+Week: 1–10
 """
 
 # === Imports ===
@@ -14,7 +11,6 @@ import json
 
 
 def main():
-    """Run the Quest Shop game."""
     while True:
         print("[1] New Game  [2] Load Game [H] Help [Q] Quit")
         choice = input("> ").strip().lower()
@@ -39,7 +35,6 @@ def main():
 
 
 def new_game():
-    # Create a new game state with starting values
     difficulty = input("[1] Easy  [2] Normal  [3] Hard\n> ")
     if difficulty == "1":
         return {
@@ -76,10 +71,10 @@ CATALOG = {
     "Herb": {"buy": 5, "sell": 7},
     "Potion": {"buy": 10, "sell": 15},
     "Helmet": {"buy": 100, "sell": 300},
-    "Sword": {"buy": 28, "sell": 50},
+    "Sword": {"buy": 500, "sell": 1500},
     "Magic Scroll": {"buy": 7000000, "sell": 10000000},
-    "Legendary Scroll": {"buy": 50000000000000, "sell": 75000000000000},
-    "Legendary Sword": {"buy": 7500000000000, "sell": 10000000000000}
+    "Legendary Sword": {"buy": 7500000000000 , "sell": 10000000000000},
+    "Legendary Scroll": {"buy": "n/a", "sell": 7500000000000}
 }
 
         
@@ -87,7 +82,6 @@ CATALOG = {
 
 # === Helper Functions ===
 def show_status(state):
-    """Display the current day, gold, and inventory."""
     print(f"\n📅 Day {state['day']}  💰 Gold: {state['gold']} | 💀 Difficulty: {state['difficulty']}")
     if not state["inventory"]:
         print("🧺 Inventory: (empty)")
@@ -98,12 +92,10 @@ def show_status(state):
 
 # === inventory management ===
 def add_item(inv, name, qty):
-    """Add items to the player’s inventory."""
     inv[name] = inv.get(name, 0) + qty
 
 
 def can_afford(state, cost):
-    """Check if player can afford an item."""
     return state["gold"] >= cost
 
 # === event function ===
@@ -197,7 +189,6 @@ def wonderingBlacksmith():
 
 # === Main Loop ===
 def day_menu(state):
-    # Main daily menu for the player
     while True:
         show_status(state)
         if state["difficulty"] == "1":
@@ -239,16 +230,15 @@ def show_help():
     print("Good luck, and have fun playing Quest Shop!")
 # === Game Actions ===
 def buy_flow(state):
-    """Allow the player to buy items."""
     print("\n=== 🛒 BUY ITEMS ===")
     for i, (name, data) in enumerate(CATALOG.items(), start=1):
-        print(f"[{i}] {name} (buy {data['buy']}g)")
+            print(f"[{i}] {name} (price: {data['buy']})")
     print("[0] Back")
 
     choice = input("> ").strip()
     if choice == "0":
         return
-    elif choice == "8":
+    elif choice == "7":
         print("⚠️ This item is not available for purchase.")
         return
     try:
@@ -269,7 +259,7 @@ def buy_flow(state):
 
     cost = CATALOG[item_name]["buy"] * qty
     if not can_afford(state, cost):
-        print("❌ Not enough gold.")
+        print("⚠️ Not enough gold.")
         return
 
     state["gold"] -= cost
@@ -277,7 +267,6 @@ def buy_flow(state):
     print(f"✅ Bought {qty} {item_name}(s) for {cost} gold.")
 
 def craft_items():
-    """Allow the player to craft items."""
     print("\n=== 🛠️ CRAFT ITEMS ===")
     print("Available recipes:")
     print("[1] Potion (requires 5 Herbs) - sells for 7g")
@@ -299,7 +288,7 @@ def craft_items():
             add_item(state["inventory"], "Potion", 1)
             print("✅ Crafted 1 Potion.")
         else:
-            print("❌ Not enough Herbs to craft a Potion.")
+            print("⚠️ Not enough Herbs to craft a Potion.")
     elif choice == "2":
         have_herbs = state["inventory"].get("Herb", 0)
         have_swords = state["inventory"].get("Sword", 0)
@@ -310,7 +299,7 @@ def craft_items():
             add_item(state["inventory"], "Helmet", 1)
             print("✅ Crafted 1 Helmet.")
         else:
-            print("❌ Not enough resources to craft a Helmet.")
+            print("⚠️ Not enough resources to craft a Helmet.")
     elif choice == "3":
         have_herbs = state["inventory"].get("Herb", 0)
         if have_herbs >= 5 and state["gold"] >= 10:
@@ -319,7 +308,7 @@ def craft_items():
             add_item(state["inventory"], "Sword", 1)
             print("✅ Crafted 1 Sword.")
         else:
-            print("❌ Not enough resources to craft a Sword.")
+            print("⚠️ Not enough resources to craft a Sword.")
     elif choice == "4":
         have_herbs = state["inventory"].get("Herb", 0)
         if have_herbs >= 5 and state["gold"] >= 5000000:
@@ -328,7 +317,7 @@ def craft_items():
             add_item(state["inventory"], "Magic Scroll", 1)
             print("✅ Crafted 1 Magic Scroll.")
         else:
-            print("❌ Not enough resources to craft a Magic Scroll.")
+            print("⚠️ Not enough resources to craft a Magic Scroll.")
     elif choice == "5":
         have_magic_scroll = state["inventory"].get("Magic Scroll", 0)
         have_herbs = state["inventory"].get("Herb", 0)
@@ -339,7 +328,7 @@ def craft_items():
             add_item(state["inventory"], "Legendary Scroll", 1)
             print("✅ Crafted 1 Legendary Scroll.")
         else:
-            print("❌ Not enough resources to craft a Legendary Scroll.")
+            print("⚠️ Not enough resources to craft a Legendary Scroll.")
     elif choice == "6":
         have_magic_scroll = state["inventory"].get("Legendary Scroll", 0)
         have_sword = state["inventory"].get("Sword", 0)
@@ -350,13 +339,12 @@ def craft_items():
             add_item(state["inventory"], "Legendary Sword", 1)
             print("✅ Crafted 1 Legendary Sword.")
         else:
-            print("❌ Not enough resources to craft a Legendary Sword.")
+            print("⚠️ Not enough resources to craft a Legendary Sword.")
     else:
         print("⚠️ Invalid choice.")
 
 
 def sell_to_customer(state):
-    """Sell random items to a customer."""
     print("\n=== 💬 CUSTOMER ===")
     item = random.choice(list(CATALOG.keys()))
     qty = random.randint(1, 3)
@@ -373,7 +361,6 @@ def sell_to_customer(state):
 
 
 def end_day(state):
-    """End the day and move to the next one."""
     print("\n🌙 The day ends...")
     state["day"] += 1
     print(f"🌞 It is now Day {state['day']}.")
@@ -427,7 +414,7 @@ def save_game(state):
             json.dump(state, f, indent=2)
         print("✅ Game saved successfully.")
     except Exception as e:
-        print(f"❌ Error saving game: {e}")
+        print(f"⚠️ Error saving game: {e}")
 
 
 def load_game():
@@ -437,14 +424,14 @@ def load_game():
         print("✅ Game loaded successfully.")
         return data
     except FileNotFoundError:
-        print("❌ No save file found.")
+        print("⚠️ No save file found.")
         return None
     except Exception as e:
-        print(f"❌ Error loading game: {e}")
+        print(f"⚠️ Error loading game: {e}")
         return None
 
 # === Program Start ===
 if __name__ == "__main__":
-    print("🏰 Welcome to QUEST SHOP [VERSION 1.20.3]")
+    print("🏰 Welcome to QUEST SHOP [VERSION 2.0.25]")
     state = new_game()
     main()
