@@ -34,7 +34,24 @@ state = {
 def send_mission():
 
     print("\nSending mission...")
-
+    outcome = random.randint(1, 5)
+    if outcome == 1:
+        print("Mission successful! You found some metal.")
+        state["resources"]["metal"] += random.randint(5, 15)
+    elif outcome == 2:
+        print("Mission successful! You found some fuel.")
+        state["resources"]["fuel"] += random.randint(5, 15)
+    elif outcome == 3:
+        print("Mission successful! You found some crystals.")
+        state["resources"]["crystals"] += random.randint(5, 15)
+    elif outcome == 4:
+        print("Aliens raided your ship, you lost some recources!")
+        state["resources"]["metal"] = max(0, state["resources"]["metal"] - random.randint(1, 5))
+        state["resources"]["fuel"] = max(0, state["resources"]["fuel"] - random.randint(1, 5))
+        state["resources"]["crystals"] = max(0, state["resources"]["crystals"] - random.randint(1, 5))
+    else:
+        print("Mission failed. No resources found.")
+    
     # TODO Week 3:
     # Use random.choice() to select an outcome
     # Possible outcomes: metal, fuel, crystals, nothing
@@ -62,11 +79,52 @@ shop = {
 def trade_menu():
 
     print("\n--- SPACE TRADER ---")
+    print("You have {} credits.".format(state["credits"]))
+    print("[1] Buy fuel (10 credits)")
+    print("[2] Buy repair kit (15 credits)")
+    print("[3] Buy sensor (25 credits)")
+    print("[4] Sell metal (5 credits each)")
+    print("[5] Trade fuel (+1 energy each)")
+    print("[0] Back")
 
     # TODO Week 4:
     # Print shop items using a loop
 
-    choice = input("What do you want to buy? ")
+    choice = input("> ")
+    if choice == "1":
+        print("You bought fuel.")
+        state["credits"] -= shop["fuel"]
+        state["resources"]["fuel"] += 10
+    elif choice == "2":
+        print("You bought a repair kit.")
+        state["credits"] -= shop["repair_kit"]
+        state["resources"]["repair_kit"] += 1
+    elif choice == "3":
+        print("You bought a sensor.")
+        state["credits"] -= shop["sensor"]
+        state["resources"]["sensor"] += 1
+    elif choice == "4":
+        print("How many do you want to sell?")
+        quantity = int(input("> "))
+        if quantity <= state["resources"]["metal"]:
+            state["credits"] += quantity * 5
+            state["resources"]["metal"] -= quantity
+            print(f"You sold {quantity} metal.")
+        else:
+            print("Not enough metal to sell.")
+    elif choice == "5":
+        print("How many fuel do you want to trade?")
+        quantity = int(input("> "))
+        if quantity <= state["resources"]["fuel"]:
+            state["energy"] += quantity
+            state["resources"]["fuel"] -= quantity
+            print(f"You traded {quantity} fuel for {quantity} energy.")
+        else:
+            print("Not enough fuel to trade.")
+    elif choice == "0":
+        print("You left the space trader.")
+    else:
+        print("Invalid choice.")
 
     # TODO Week 4:
     # Check if item exists
@@ -164,7 +222,7 @@ def end_day():
 def show_status():
 
     print("\n--- SPACE STATION STATUS ---")
-
+    print(" Day: {} | Energy: {} | Credits: {} | Crew: {} | Recources: {}".format(state["day"], state["energy"], state["credits"], state["crew"], state["resources"]))
     # TODO Week 8:
     # Print:
     # Day
@@ -176,14 +234,11 @@ def show_status():
     print("----------------------------\n")
 
 
-# =====================================================
-# WEEK 1 — MAIN MENU
-# Create menu system and user input
-# =====================================================
-
 def main_menu():
 
     print("\n🚀 SPACE STATION COMMANDER")
+    print("------------------------------")
+    print(" Day {} | Energy: {} | Credits: {} | Crew: {} | Resources: {}".format(state["day"], state["energy"], state["credits"]))
     print("[1] Send Exploration Mission")
     print("[2] Trade with Space Trader")
     print("[3] Check Station Status")
@@ -217,10 +272,14 @@ while running:
 
     main_menu()
 
-    choice = input("Choose an option: ").lower()
+    choice = input("> ").lower()
 
     if choice == "1":
         send_mission()
+        state["energy"] -= 10
+        if state["energy"] <= 10:
+            print("Not enough energy for exploration mission.")
+            print("Consider trading fuel for energy or ending the day to recover energy.")
 
     elif choice == "2":
         trade_menu()
