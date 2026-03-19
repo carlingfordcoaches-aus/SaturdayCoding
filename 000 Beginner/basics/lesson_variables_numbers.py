@@ -15,14 +15,16 @@ def exercise_2():
     """**Convert Minutes to Hours**: Create a variable `study_minutes` and assign it the value `90`. Convert the minutes to hours and print the result in a formatted sentence."""
     # TODO: Convert study minutes to hours with a formatted sentence.
     study_minutes = 90
-    if 
+    study_hours = study_minutes / 60
+    print(f"Study Time: {study_minutes} minutes = {study_hours} hours")
+        
     pass
     
 
 def main():
     """Uncomment the exercises you want to run."""
     exercise_1()
-    # exercise_2()
+    exercise_2()
     pass
 
 if __name__ == '__main__':
