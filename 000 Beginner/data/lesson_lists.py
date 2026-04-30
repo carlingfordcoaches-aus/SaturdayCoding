@@ -11,14 +11,15 @@ def exercise_1():
 def exercise_2():
     """**Help-Desk Queue**: Simulate a help-desk queue using a list. Start with a list of names (e.g., `["Alice", "Bob", "Charlie"]`). Use `insert()` to add a new name to the beginning of the queue and `pop()` to remove the last name. Print the queue after each operation."""
     # TODO: Simulate a help-desk queue using insert and pop operations.
-
-    pass
+    name_list = ["Alice", "Bob", "Charlie"]
+    name_list.insert(1, "Alice"), name_list.pop(2)
+    print(name_list)
 
 
 def main():
     """Uncomment the exercises you want to run."""
-    exercise_1()
-    # exercise_2()
+    # exercise_1()
+    exercise_2()
     pass
 
 if __name__ == '__main__':
