@@ -1,1 +1,11 @@
-
+{
+  "day": 1,
+  "energy": 0,
+  "credits": 20,
+  "crew": 3,
+  "resources": {
+    "metal": 28,
+    "fuel": 37,
+    "crystals": 12
+  }
+}
