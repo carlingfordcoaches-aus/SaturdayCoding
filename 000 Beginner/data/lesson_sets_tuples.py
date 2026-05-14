@@ -13,8 +13,10 @@ def exercise_1():
 def exercise_2():
     """**Seat Coordinates**: Store classroom seat coordinates as a list of tuples, where each tuple represents a `(row, seat)` pair (e.g., `(1, "A")`, `(1, "B")`). Iterate over the list and print each coordinate."""
     # TODO: Store classroom seat coordinates as tuples and iterate over them.
-    seats = [{number}, {letter}]
-    pass}
+    seats = [(1, "A"), (2, "B"), (3, "C")]
+    for row, seats in seats:
+        print(f"(row  = {row}, seat = (seats))")
+    pass
     
 
 def main():
