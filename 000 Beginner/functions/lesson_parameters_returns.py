@@ -16,7 +16,7 @@ def exercise_2():
     header_header = " OFFICIAL MEMBER "
     member_name = f" Name: {member_name} "
     club_name = f" Club: {club_name} "
-    print_console_bagde()
+    print(f"{header_header}. ")
 
 
 def main():
