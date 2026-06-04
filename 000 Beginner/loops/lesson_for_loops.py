@@ -5,7 +5,8 @@ Focus: Use for-loops with ranges and lists to repeat work."""
 def exercise_1():
     """**Multiplication Table**: Use a for-loop with `range()` to print a multiplication table for the number `5`, from 1 to 10."""
     # TODO: Print a multiplication table for numbers 1 through 5.
-    pass
+    for i in range(1, 11):
+        print(f"5 x {i} = {5 * i}")
 
 
 def exercise_2():
@@ -16,7 +17,7 @@ def exercise_2():
 
 def main():
     """Uncomment the exercises you want to run."""
-    # exercise_1()
+    exercise_1()
     # exercise_2()
     pass
 

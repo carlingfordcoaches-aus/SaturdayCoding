@@ -12,11 +12,11 @@ def exercise_1():
     pass
 
 def exercise_2():
-    def print_console_badge(member_name= "Lincolm", club_name= "Python Coding Club"):
     header_header = " OFFICIAL MEMBER "
-    member_name = f" Name: {member_name} "
-    club_name = f" Club: {club_name} "
-    print(f"{header_header}. ")
+    member_name = input(f"")
+    club_name = input()
+    print(f"""{header_header}
+    {member_name} {club_name}""")
 
 
 def main():
@@ -27,4 +27,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

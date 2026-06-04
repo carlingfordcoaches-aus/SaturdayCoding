@@ -22,7 +22,7 @@ def greet_student(name, goal, grade_level = None):
             return f"Hello {name}(Grade{grade_level})! Keep working towards our goal!"
         else: 
             return f"Hello {name}! Keep working towards {goal} {grade_level}!"
-def grade_level:
+def grade_level():
     print(greet_student("Jethro", "Mastering Python",))
 
 
