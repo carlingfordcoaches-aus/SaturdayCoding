@@ -5,6 +5,12 @@ Focus: Build while-loops with sentinels and counters."""
 def exercise_1():
     """**Command Prompt**: Write a while-loop that repeatedly prompts the user for a command until they type `"exit"`."""
     # TODO: Prompt for commands until the user types "exit".
+    while True:
+        command = input("Enter a command: ")
+    
+        if command.strip().lower() == "exit":
+            print("Exiting...")
+        break
     pass
 
 
@@ -16,7 +22,7 @@ def exercise_2():
 
 def main():
     """Uncomment the exercises you want to run."""
-    # exercise_1()
+    exercise_1()
     # exercise_2()
     pass
 

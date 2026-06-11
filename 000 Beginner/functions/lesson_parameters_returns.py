@@ -13,7 +13,7 @@ def exercise_1():
 
 def exercise_2():
     header_header = " OFFICIAL MEMBER "
-    member_name = input(f"")
+    member_name = input()
     club_name = input()
     print(f"""{header_header}
     {member_name} {club_name}""")
