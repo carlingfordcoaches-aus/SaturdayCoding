@@ -10,6 +10,10 @@ def exercise_1():
     
         if command.strip().lower() == "exit":
             print("Exiting...")
+        if command.strip().lower() == "start":
+            print("Starting...")
+        if command.strip().lower() == "pause":
+            print("Pausing...")
         break
     pass
 
@@ -17,13 +21,20 @@ def exercise_1():
 def exercise_2():
     """**Countdown Timer**: Create a while-loop that counts down from `3` to `1` and then prints `"Time!"`."""
     # TODO: Create a countdown timer that prints "Time!" at the end.
+    countdown = 74
+
+    while countdown > 0:
+            print(countdown)
+    countdown -= 1
+    print("Time!")
+        
     pass
 
 
 def main():
     """Uncomment the exercises you want to run."""
-    exercise_1()
-    # exercise_2()
+    # exercise_1()
+    exercise_2()
     pass
 
 if __name__ == '__main__':
