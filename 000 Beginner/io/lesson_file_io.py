@@ -5,6 +5,12 @@ Focus: Save notes to disk and read them back with numbering."""
 def exercise_1():
     """**Numbered Notes**: Write three motivational lines to a text file named `notes.txt`. Then, read the file and print each line with a number in front of it."""
     # TODO: Write three motivational lines to a text file and number them when printing.
+    motivational_lines = [
+    "Believe you can and you're already halfway there!", 
+    "You are doing so well!", 
+    "Your only limitation is your imagination!"]
+    motivational_lines.notes.txt():
+
     pass
 
 
@@ -16,7 +22,7 @@ def exercise_2():
 
 def main():
     """Uncomment the exercises you want to run."""
-    # exercise_1()
+    exercise_1()
     # exercise_2()
     pass
 
